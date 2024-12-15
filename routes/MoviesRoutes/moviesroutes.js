@@ -1,7 +1,7 @@
 import express from "express";
 
 
-import { addMovies, deleteMovies, getLatestMovies, getMovies, updateMovies } from "../../controller/Movies/moviesController.js";
+import { addMovies, deleteMovies, getLatestMovies, getMovieById, getMovies, updateMovies } from "../../controller/Movies/moviesController.js";
 import { addImagesToMovie, deleteMovieImage, getMovieImage, updateMovieImage } from "../../controller/Movies/addMoviesImage.js";
 import { addVideoToMovie, deleteMovieVideo, getMovieVideos, updateMovieVideo } from "../../controller/Movies/addMoviesVideos.js";
 
@@ -18,6 +18,7 @@ router.post("/movies", addMovies);
 router.get("/movies", getMovies);
 router.put("/movies/:id", updateMovies);
 router.delete("/movies/:id", deleteMovies);
+router.get("/movies/:id", getMovieById);
 
 // Add images to a movie
 router.post('/:id/images', addImagesToMovie);

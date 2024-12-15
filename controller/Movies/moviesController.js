@@ -49,6 +49,18 @@ export const deleteMovies = async (req, res) => {
 };
 
 
+export const getMovieById = async (req, res) => {
+  try {
+      const movie = await Movie.findById(req.params.id).populate('categories genres characters staff');
+      if (!movie) {
+          return res.status(404).send({ message: "Movie not found" });
+      }
+      res.status(200).send(movie);
+  } catch (error) {
+      res.status(500).send(error);
+  }
+};
+
   
   
   
@@ -61,6 +73,7 @@ export const deleteMovies = async (req, res) => {
       next(err);
     }
   };
+
   
   
   
